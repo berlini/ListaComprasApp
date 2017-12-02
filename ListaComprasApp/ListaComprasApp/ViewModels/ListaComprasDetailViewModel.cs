@@ -21,5 +21,20 @@ namespace ListaComprasApp.ViewModels
             }
         }
 
+        public ListaComprasDetailViewModel()
+        {
+
+        }
+
+        public void AdicionaItem()
+        {
+
+        }
+
+        public void Salvar()
+        {
+
+        }
+
     }
 }

@@ -25,7 +25,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ListView ItemsSource="{x:Bind ViewModel.ListaCompras, Mode=TwoWay, Converter={StaticResource TypeToObjectConverter}}"
-                  SelectedItem="{x:Bind ViewModel.ListaSelecionada}" SelectionChanged="{x:Bind ViewModel.OnListaSelecionadaChanged}">
+                  SelectedItem="{x:Bind ViewModel.ListaSelecionada, Mode=TwoWay, Converter={StaticResource TypeToObjectConverter}}"
+                  SelectionChanged="{x:Bind ViewModel.OnListaSelecionadaChanged}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />

@@ -1,4 +1,6 @@
-﻿using ListaComprasApp.ViewModels;
+﻿using ListaComprasApp.Entities;
+using ListaComprasApp.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +30,16 @@ namespace ListaComprasApp.Pages
         public ListaComprasDetailPage()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var listaCompras = JsonConvert.DeserializeObject<ListaCompras>(e.Parameter.ToString());
+
+            if (listaCompras != null)
+            {
+                ViewModel.ListaCompras = listaCompras;
+            }
         }
     }
 }

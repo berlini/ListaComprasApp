@@ -32,8 +32,11 @@ namespace ListaComprasApp.ViewModels
             get { return _listaSelecionada; }
             set
             {
-                _listaSelecionada = value;
-                OnPropertyChanged();
+                if (_listaSelecionada != value)
+                {
+                    _listaSelecionada = value;
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -52,6 +55,31 @@ namespace ListaComprasApp.ViewModels
                     Finalizado = false,
                     Titulo = "Teste de observação",
                     Items = new List<Item>()
+                    {
+                        new Item()
+                        {
+                            Nome = "Nescau",
+                            Quantidade = 1,
+                            Concluido = false,
+                            Observacao = "Só o Felipe toma com leite"
+                        },
+
+                        new Item()
+                        {
+                            Nome = "Toddy",
+                            Quantidade = 1,
+                            Concluido = false,
+                            Observacao = "Só a Thais toma com leite"
+                        },
+
+                        new Item()
+                        {
+                            Nome = "Salgadinho",
+                            Quantidade = 2,
+                            Concluido = false,
+                            Observacao = "Thais come Ruffles e o Felipe come Doritos"
+                        }
+                    }
                 },
                 new ListaCompras()
                 {

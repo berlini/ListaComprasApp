@@ -119,7 +119,9 @@
       <DependentUpon>ListaComprasPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ItemRepository.cs" />
     <Compile Include="Repositories\ListaComprasContex.cs" />
+    <Compile Include="Repositories\ListaComprasRepository.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Utils\NotifyableClass.cs" />
     <Compile Include="ViewModels\ListaComprasDetailViewModel.cs" />

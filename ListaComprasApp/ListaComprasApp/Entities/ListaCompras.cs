@@ -1,11 +1,24 @@
 ﻿using ListaComprasApp.Utils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ListaComprasApp.Entities
 {
     public class ListaCompras : NotifyableClass
     {
+        private string _lidtaId;
+        [Key]
+        public string ListaId
+        {
+            get { return _lidtaId; }
+            set
+            {
+                _lidtaId = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string _titulo;
         public string Titulo
         {

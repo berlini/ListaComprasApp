@@ -1,5 +1,7 @@
 ﻿using ListaComprasApp.Pages;
+using ListaComprasApp.Repositories;
 using ListaComprasApp.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,6 +35,11 @@ namespace ListaComprasApp
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            using (var db = new ListaComprasContex())
+            {
+                db.Database.Migrate();
+            }
         }
 
         /// <summary>

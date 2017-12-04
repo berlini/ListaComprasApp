@@ -1,7 +1,6 @@
 ﻿using ListaComprasApp.Pages;
 using ListaComprasApp.Repositories;
 using ListaComprasApp.Services;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,6 +18,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace ListaComprasApp
 {
@@ -27,6 +27,8 @@ namespace ListaComprasApp
     /// </summary>
     sealed partial class App : Application
     {
+        public static MobileServiceClient MobileService = new MobileServiceClient("https://listacomprasapp.azurewebsites.net");
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -35,11 +37,6 @@ namespace ListaComprasApp
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-
-            using (var db = new ListaComprasContex())
-            {
-                db.Database.Migrate();
-            }
         }
 
         /// <summary>

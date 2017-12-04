@@ -1,4 +1,5 @@
 ﻿using ListaComprasApp.Entities;
+using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,18 @@ namespace ListaComprasApp.Repositories
 {
     public class ItemRepository
     {
+        IMobileServiceTable<Item> tabela = App.MobileService.GetTable<Item>();
+
         public List<Item> LoadAll()
         {
-            using (var context = new ListaComprasContex())
-            {
-                return context.Items.ToList();
-            }
+            var retorno = tabela.ToListAsync();
+
+            return retorno.Result;
         }
 
         public void Create(Item item)
         {
-            using (var context = new ListaComprasContex())
-            {
-                context.Items.Add(item);
-                context.SaveChangesAsync();
-            }
+            tabela.InsertAsync(item);
         }
     }
 }

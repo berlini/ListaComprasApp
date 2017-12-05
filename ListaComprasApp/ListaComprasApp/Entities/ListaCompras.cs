@@ -1,14 +1,14 @@
 ﻿using ListaComprasApp.Utils;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ListaComprasApp.Entities
 {
     public class ListaCompras : NotifyableClass
     {
         private string _lidtaId;
-        [Key]
+        [JsonProperty("id")]
         public string ListaId
         {
             get { return _lidtaId; }

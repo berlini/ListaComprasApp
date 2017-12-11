@@ -1,6 +1,5 @@
 ﻿using ListaComprasApp.Entities;
 using ListaComprasApp.Pages;
-using ListaComprasApp.Repositories;
 using ListaComprasApp.Services;
 using ListaComprasApp.Utils;
 using System;
@@ -49,9 +48,47 @@ namespace ListaComprasApp.ViewModels
 
         private void Inicializa()
         {
-            var repositorio = new ListaComprasRepository();
+            ListaCompras = new List<ListaCompras>() {
+                new ListaCompras()
+                {
+                    Data = DateTime.Now,
+                    Finalizado = false,
+                    Titulo = "Teste de observação",
+                    Items = new List<Item>()
+                    {
+                        new Item()
+                        {
+                            Nome = "Nescau",
+                            Quantidade = 1,
+                            Concluido = false,
+                            Observacao = "Só o Felipe toma com leite"
+                        },
 
-            ListaCompras = repositorio.LoadAll();
+                        new Item()
+                        {
+                            Nome = "Toddy",
+                            Quantidade = 1,
+                            Concluido = false,
+                            Observacao = "Só a Thais toma com leite"
+                        },
+
+                        new Item()
+                        {
+                            Nome = "Salgadinho",
+                            Quantidade = 2,
+                            Concluido = false,
+                            Observacao = "Thais come Ruffles e o Felipe come Doritos"
+                        }
+                    }
+                },
+                new ListaCompras()
+                {
+                    Data = DateTime.Now,
+                    Finalizado = true,
+                    Titulo = "Teste de observação 2",
+                    Items = new List<Item>()
+                }
+            };
         }
 
         public void AddListaCompras()

@@ -3,29 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Media;
 
 namespace ListaComprasApp.Converters
 {
-    public class BooleanToColor : IValueConverter
+    public class DateTimeToDateTimeOffsetConverter : IValueConverter
     {
+
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if ((bool)value)
+            try
             {
-                return new SolidColorBrush(Colors.Red);
+                DateTime date = (DateTime)value;
+                return new DateTimeOffset(date);
             }
-            else
+            catch
             {
-                return new SolidColorBrush(Colors.Green);
+                return DateTimeOffset.MinValue;
             }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DateTimeOffset dto = (DateTimeOffset)value;
+                return dto.DateTime;
+            }
+            catch
+            {
+                return DateTime.MinValue;
+            }
         }
     }
+
 }

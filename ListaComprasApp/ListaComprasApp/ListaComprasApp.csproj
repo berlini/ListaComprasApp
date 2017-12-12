@@ -11,7 +11,7 @@
     <AssemblyName>ListaComprasApp</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -98,6 +98,7 @@
     </Compile>
     <Compile Include="Converters\BooleanToColor.cs" />
     <Compile Include="Converters\BooleanToNullableBoolean.cs" />
+    <Compile Include="Converters\DateTimeToDateTimeOffsetConverter.cs" />
     <Compile Include="Converters\TypeToObjectConverter.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\ListaCompras.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Repositories\ListaComprasRepository.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Utils\NotifyableClass.cs" />
+    <Compile Include="ViewModels\AddListaComprasViewModel.cs" />
     <Compile Include="ViewModels\ListaComprasDetailViewModel.cs" />
     <Compile Include="ViewModels\ListaComprasViewModel.cs" />
   </ItemGroup>
@@ -131,7 +133,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="ListaComprasApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />

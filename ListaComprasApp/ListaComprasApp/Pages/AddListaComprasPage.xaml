@@ -5,9 +5,41 @@
     xmlns:local="using:ListaComprasApp.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    xmlns:converter="using:ListaComprasApp.Converters"
+    xmlns:model="using:ListaComprasApp.Entities">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <converter:BooleanToNullableBoolean x:Key="BooleanToNullableBoolean" />
+        <converter:DateTimeToDateTimeOffsetConverter x:Key="DateTimeToDateTimeOffsetConverter"/>
+    </Page.Resources>
 
-    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Label="Salvar" Icon="Save" Click="{x:Bind ViewModel.Salvar}" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Border BorderThickness="3" BorderBrush="Aqua" Margin="5">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Detalhes" HorizontalAlignment="Center" FontSize="20"/>
+            
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBox Text="{x:Bind ViewModel.Titulo, Mode=TwoWay}" PlaceholderText="Titulo" Grid.Row="0" Margin="5"/>
+                    <DatePicker Date="{x:Bind ViewModel.Data, Converter={StaticResource DateTimeToDateTimeOffsetConverter}, Mode=TwoWay}" Header="Data das compras" Grid.Row="1" Margin="5"/>
+                    <TextBox Text="{x:Bind ViewModel.Observacao, Mode=TwoWay}" PlaceholderText="Observação" Grid.Row="2" Margin="5"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </StackPanel>
 </Page>

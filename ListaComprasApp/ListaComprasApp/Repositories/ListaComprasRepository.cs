@@ -25,5 +25,23 @@ namespace ListaComprasApp.Repositories
                 context.SaveChangesAsync();
             }
         }
+
+        public void Edit(ListaCompras lista)
+        {
+            using (var context = new ListaComprasContex())
+            {
+                context.ListasCompras.Update(lista);
+                context.SaveChangesAsync();
+            }
+        }
+
+        public void Delete(ListaCompras lista)
+        {
+            using (var context = new ListaComprasContex())
+            {
+                context.ListasCompras.Remove(lista);
+                context.SaveChangesAsync();
+            }
+        }
     }
 }

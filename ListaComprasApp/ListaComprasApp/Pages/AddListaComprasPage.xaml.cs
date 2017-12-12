@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ListaComprasApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace ListaComprasApp.Pages
     /// </summary>
     public sealed partial class AddListaComprasPage : Page
     {
+        public AddListaComprasViewModel ViewModel { get; } = new AddListaComprasViewModel();
+
         public AddListaComprasPage()
         {
             this.InitializeComponent();

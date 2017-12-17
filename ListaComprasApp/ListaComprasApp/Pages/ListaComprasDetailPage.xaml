@@ -25,21 +25,27 @@
     </Page.BottomAppBar>
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="{x:Bind ViewModel.ListaCompras.Titulo}" HorizontalAlignment="Center" FontSize="20" Margin="0,10,0,0"/>
+        <TextBlock Text="{x:Bind ViewModel.ListaCompras.Titulo}" HorizontalAlignment="Center" Style="{ThemeResource HeaderTextBlockStyle}" Margin="0,10,0,0"/>
 
-        <TextBlock Text="Data das compras" Margin="5,0,5,0"/>
-        <TextBox Text="{x:Bind ViewModel.ListaCompras.Data}" Margin="5,0,5,10" IsEnabled="False"/>
+        <TextBlock Text="Data das compras" Margin="5,0,5,5" Style="{ThemeResource BaseTextBlockStyle}"/>
+        <TextBox Text="{x:Bind ViewModel.ListaCompras.Data}" Margin="5,0,5,15" IsEnabled="False"/>
 
-        <ToggleSwitch Header="Finalizada" IsOn="{x:Bind ViewModel.ListaCompras.Finalizado, Converter={StaticResource BooleanToNullableBoolean}, Mode=TwoWay}" Margin="5,0,5,10"
-                      OffContent="Não" OnContent="Sim"/>
+        <ToggleSwitch IsOn="{x:Bind ViewModel.ListaCompras.Finalizado, Converter={StaticResource BooleanToNullableBoolean}, Mode=TwoWay}" Margin="5,0,5,10"
+                      OffContent="Não" OnContent="Sim">
+            <ToggleSwitch.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="Finalizada" Style="{ThemeResource BaseTextBlockStyle}" Margin="5,0,5,0"/>
+                </DataTemplate>
+            </ToggleSwitch.HeaderTemplate>
+        </ToggleSwitch>
 
-        <TextBlock Text="Observações" Margin="5,0,5,0"/>
+        <TextBlock Text="Observações" Margin="5,0,5,5" Style="{ThemeResource BaseTextBlockStyle}"/>
         <TextBox Text="{x:Bind ViewModel.ListaCompras.Observacao}" Margin="5,0,5,10" IsEnabled="False"/>
 
-        <TextBlock Text="Items" Margin="0,10,0,5" HorizontalAlignment="Center"/>
+        <TextBlock Text="Items" Margin="0,10,0,5" HorizontalAlignment="Center" Style="{ThemeResource TitleTextBlockStyle}"/>
         <Border BorderThickness="1" BorderBrush="Black" Grid.Row="3" Margin="5">
             <StackPanel>
-                <TextBlock Text="Concluído" Margin="5,5,0,0"/>
+                <TextBlock Text="Concluído" Margin="5,5,0,0" Style="{ThemeResource BaseTextBlockStyle}"/>
                 <ListView ItemsSource="{x:Bind ViewModel.ListaCompras.Items}" SelectedItem="{x:Bind ViewModel.ItemSelecionado, Mode=TwoWay, Converter={StaticResource TypeToObjectConverter}}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -59,11 +65,11 @@
                                     
                                     <ToggleSwitch Grid.Column="0" IsOn="{x:Bind Concluido, Converter={StaticResource BooleanToNullableBoolean}, Mode=TwoWay}" OffContent="Não" OnContent="Sim" 
                                                   Toggled="ToggleSwitch_Toggled"/>
-                                    <TextBlock Grid.Column="1" Text="{x:Bind Quantidade}" VerticalAlignment="Center" Width="50"/>
-                                    <TextBlock Grid.Column="2" Text="{x:Bind Nome}" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="1" Text="{x:Bind Quantidade}" VerticalAlignment="Center" Width="50" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                    <TextBlock Grid.Column="2" Text="{x:Bind Nome}" VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
                                 </Grid>
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock Text="{x:Bind Observacao}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{x:Bind Observacao}" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"/>
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>

@@ -51,7 +51,7 @@ namespace ListaComprasApp.ViewModels
         {
             var repositorio = new ListaComprasRepository();
 
-            ListaCompras = repositorio.LoadAll();
+            ListaCompras = repositorio.LoadAll().OrderBy(o => o.Data).ToList();
         }
 
         public void AddListaCompras()

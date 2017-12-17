@@ -23,7 +23,7 @@
     </Page.BottomAppBar>
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Detalhes" HorizontalAlignment="Center" FontSize="20"/>
+        <TextBlock Text="Detalhes" HorizontalAlignment="Center" Style="{ThemeResource HeaderTextBlockStyle}"/>
             
         <Grid Margin="5">
             <Grid.RowDefinitions>
@@ -34,10 +34,19 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Text="Qual é o título da lista?" Margin="5,10,5,0"/>
-            <TextBox Text="{x:Bind ViewModel.Titulo, Mode=TwoWay}" PlaceholderText="Titulo" Grid.Row="1" Margin="5"/>
-            <DatePicker Date="{x:Bind ViewModel.Data, Converter={StaticResource DateTimeToDateTimeOffsetConverter}, Mode=TwoWay}" Header="Qual é a data na qual as compras serão feitas?" Grid.Row="2" Margin="5,10,5,0"/>
-            <TextBlock Grid.Row="3" Text="Há observações a serem feitas?" Margin="5,10,5,0"/>
+            <TextBlock Grid.Row="0" Text="Qual é o título da lista?" Margin="5,10,5,0" Style="{ThemeResource BaseTextBlockStyle}"/>
+            <TextBox Text="{x:Bind ViewModel.Titulo, Mode=TwoWay}" PlaceholderText="Titulo" Grid.Row="1" Margin="5" />
+            
+            <CalendarDatePicker Date="{x:Bind ViewModel.Data, Converter={StaticResource DateTimeToDateTimeOffsetConverter}, Mode=TwoWay}" Grid.Row="2" Margin="5"
+                                PlaceholderText="Selecione uma data">
+                <CalendarDatePicker.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="Qual é a data na qual as compras serão feitas?" Style="{ThemeResource BaseTextBlockStyle}" Margin="5,10,5,0"/>
+                    </DataTemplate>
+                </CalendarDatePicker.HeaderTemplate>
+            </CalendarDatePicker>
+            
+            <TextBlock Grid.Row="3" Text="Há observações a serem feitas?" Margin="5,10,5,0" Style="{ThemeResource BaseTextBlockStyle}"/>
             <TextBox Text="{x:Bind ViewModel.Observacao, Mode=TwoWay}" PlaceholderText="Observações" Grid.Row="4" Margin="5"/>
         </Grid>
     </StackPanel>

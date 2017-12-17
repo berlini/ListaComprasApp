@@ -15,11 +15,11 @@ namespace ListaComprasApp.Converters
         {
             if ((bool)value)
             {
-                return new SolidColorBrush(Colors.Red);
+                return new SolidColorBrush(Colors.Red).Color;
             }
             else
             {
-                return new SolidColorBrush(Colors.Green);
+                return new SolidColorBrush(Colors.Green).Color;
             }
         }
 

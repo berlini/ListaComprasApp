@@ -34,22 +34,18 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:ListaCompras">
-                    <Grid Background="{x:Bind Finalizado, Converter={StaticResource BooleanToColor}, Mode=OneWay}"
-                          BorderThickness="1" BorderBrush="Black">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Text="{x:Bind Titulo, Mode=OneWay}" Grid.Row="0" HorizontalAlignment="Center"/>
-                        <TextBlock Text="{x:Bind Observacao, Mode=OneWay}" Grid.Row="1"/>
-                        <TextBlock Text="{x:Bind Data.Date, Mode=OneWay}" Grid.Row="2" HorizontalAlignment="Right"
-                                   FontSize="12" Foreground="Silver"/>
-                    </Grid>
+                    <StackPanel Orientation="Horizontal" Margin="5,0,5,10">
+                        <Ellipse Height="48" Width="48" VerticalAlignment="Center">
+                            <Ellipse.Fill>
+                                <SolidColorBrush Color="{x:Bind Finalizado, Converter={StaticResource BooleanToColor}, Mode=OneWay}" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <StackPanel VerticalAlignment="Center" Margin="12,0,0,0">
+                            <TextBlock Text="{x:Bind Titulo}"  Style="{ThemeResource BaseTextBlockStyle}" Margin="0,4,0,0"/>
+                            <TextBlock Text="{x:Bind Data.Date}" Style="{ThemeResource CaptionTextBlockStyle}" Opacity=".8" Margin="0,4,0,0"/>
+                            <TextBlock Text="{x:Bind Observacao}" Style="{ThemeResource CaptionTextBlockStyle}" Opacity=".6" Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -125,6 +125,7 @@
     <Compile Include="Repositories\ListaComprasRepository.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Utils\NotifyableClass.cs" />
+    <Compile Include="ViewModels\AddItemViewModel.cs" />
     <Compile Include="ViewModels\AddListaComprasViewModel.cs" />
     <Compile Include="ViewModels\ListaComprasDetailViewModel.cs" />
     <Compile Include="ViewModels\ListaComprasViewModel.cs" />

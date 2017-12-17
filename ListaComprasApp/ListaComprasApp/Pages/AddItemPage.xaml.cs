@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ListaComprasApp.Entities;
+using ListaComprasApp.ViewModels;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +25,21 @@ namespace ListaComprasApp.Pages
     /// </summary>
     public sealed partial class AddItemPage : Page
     {
+        public AddItemViewModel ViewModel { get; } = new AddItemViewModel();
+
         public AddItemPage()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var listaCompras = JsonConvert.DeserializeObject<ListaCompras>(e.Parameter.ToString());
+
+            if (listaCompras != null)
+            {
+                ViewModel.ListaCompras = listaCompras;
+            }
         }
     }
 }

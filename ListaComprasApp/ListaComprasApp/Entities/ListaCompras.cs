@@ -73,5 +73,10 @@ namespace ListaComprasApp.Entities
                 OnPropertyChanged();
             }
         }
+
+        public ListaCompras()
+        {
+            Items = new List<Item>();
+        }
     }
 }

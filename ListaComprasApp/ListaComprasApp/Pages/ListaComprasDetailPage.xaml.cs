@@ -41,5 +41,18 @@ namespace ListaComprasApp.Pages
                 ViewModel.ListaCompras = listaCompras;
             }
         }
+
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            var elemento = (ToggleSwitch)e.OriginalSource;
+            Item item = (Item)elemento.DataContext;
+
+            if(item != null)
+            {
+                item.Concluido = elemento.IsOn;
+
+                ViewModel.SalvarItem(item);
+            }
+        }
     }
 }

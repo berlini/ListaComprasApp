@@ -1,4 +1,5 @@
 ﻿using ListaComprasApp.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace ListaComprasApp.Repositories
         {
             using (var context = new ListaComprasContex())
             {
-                return context.ListasCompras.ToList();
+                return context.ListasCompras.Include(lista => lista.Items).ToList();
             }
         }
 

@@ -17,12 +17,21 @@ namespace ListaComprasApp.Repositories
             }
         }
 
-        public void Create(Item item)
+        public async void Create(Item item)
         {
             using (var context = new ListaComprasContex())
             {
                 context.Items.Add(item);
-                context.SaveChangesAsync();
+                await context.SaveChangesAsync();
+            }
+        }
+
+        public async void Edit(Item item)
+        {
+            using (var context = new ListaComprasContex())
+            {
+                context.Items.Update(item);
+                await context.SaveChangesAsync();
             }
         }
     }
